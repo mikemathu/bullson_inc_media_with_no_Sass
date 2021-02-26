@@ -3,11 +3,6 @@
 get_header(); 
 
 // Retrieving a field as a variable
-// Home section
-$getHomeTitle = get_field( "title" );
-$getHomeText = get_field( "text" );
-$getHomeButton = get_field( "button" );
-$getHomeBackgroungImage = get_field('backgroung_image');
 
 // Services Section
 $getServicesHeading = get_field("services_heading"); 
@@ -33,40 +28,8 @@ $getCallToActionLink = get_field("call_to_action_link");
 ?>
 
 
-<section id="home">
-
-        <div id="home-cover" class="bg-parallax animated fadeIn">
-
-            <div id="home-content-box">
-
-                <div id="home-content-box-inner" class="text-center">
-
-                    <div id="home-heading" class="animated zoomIn">
-                        <?php if ( !empty( $getHomeTitle ) ):?>
-
-                            <h3><?php echo $getHomeTitle;?></h3>
-
-                        <?php endif; ?>
-
-                        <?php if( !empty( $getHomeText ) ):?>
-
-                            <p><?php echo $getHomeText;?></p>
-
-                        <?php endif; ?>
 
 
-                    </div>
-                    <div id="home-btn" class="animated zoomIn">
-                        <a class="btn btn-lg btn-general btn-white smooth-scroll" href="#contact-right" role="button" title="View Our Work">Contact Us</a>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
 
 
 
@@ -180,7 +143,7 @@ $getCallToActionLink = get_field("call_to_action_link");
 
     <div class="row">
 
-        <div class="col-md-4">
+        <!-- <div class="col-md-4"> -->
 
             <div id="about-content-box">
 
@@ -221,7 +184,7 @@ $getCallToActionLink = get_field("call_to_action_link");
 
             </div>
 
-        </div>
+        <!-- </div> -->
 
     </div>
 
@@ -320,7 +283,8 @@ $getCallToActionLink = get_field("call_to_action_link");
 
 
                 <!-- Single Teachers -->
-                <div class="col-12 col-sm-6 col-lg-4">
+                <!-- <div class="col-12 col-sm-6 col-lg-4"> -->
+                <div class="col-md-4 col-sm-4">
                     <div class="single-teachers-area text-center mb-100 wow fadeInUp" data-wow-delay="400ms">
                         <!-- Thumbnail -->
                         <div class="teachers-thumbnail">
@@ -434,20 +398,31 @@ $getCallToActionLink = get_field("call_to_action_link");
 <!-- <a class="btn btn-lg btn-general btn-blue smooth-scroll" href="#contact"role="button" title="View Work"> Let's talk </a> -->
 
 
-<?php if ( !empty( $getCallToActionLink ) ):?>
-    <a class="btn btn-lg btn-general btn-blue smooth-scroll" href="#contact"role="button" title="View Work">
-         <h3><?php echo $getCallToActionLink;?></h3>
+<?php //if ( !empty( $getCallToActionLink ) ):?>
+    <!-- <a class="btn btn-lg btn-general btn-blue smooth-scroll" href="#contact"role="button" title="View Work">
+         <h3><?php //echo $getCallToActionLink;?></h3>
+    </a> -->
+<?php //endif; ?>
+
+<?php 
+$link = get_field('call_to_action_link');
+if( $link ): 
+    $link_url = $link['url'];
+    $link_title = $link['title'];
+    $link_target = $link['target'] ? $link['target'] : '_self';
+    ?>
+    <!-- <a class="button" href="<?php //echo esc_url( $link_url ); ?>" target="<?php //echo esc_attr( $link_target ); ?>"><?php //echo esc_html( $link_title ); ?></a> -->
+
+    <a class="btn btn-lg btn-general btn-blue smooth-scroll button" href="<?php echo esc_url( $link_url ); ?>"role="button" title="View Work" target="<?php echo esc_attr( $link_target ); ?>">
+         <?php echo esc_html( $link_title );?>
     </a>
 <?php endif; ?>
 
 
 
+
+
 </section>
-
-
-
-
-
 
 
 

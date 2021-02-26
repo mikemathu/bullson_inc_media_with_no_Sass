@@ -48,11 +48,14 @@ if ( ! function_exists( 'bullson_inc_media_setup' ) ) :
 		add_theme_support( 'post-thumbnails' );
 
 		// This theme uses wp_nav_menu() in one location.
-		register_nav_menus(
-			array(
-				'menu-1' => esc_html__( 'Primary', 'bullson_inc_media' ),
-			)
-		);
+		// register_nav_menus(
+		// 	array(
+		// 		'menu-1' => esc_html__( 'Primary', 'bullson_inc_media' ),
+		// 	)
+		// );
+		register_nav_menus( array(
+			'primary' => __( 'Primary Menu', 'bullson_inc_media' ),
+		) );
 
 		/*
 		 * Switch default core markup for search form, comment form, and comments
@@ -157,14 +160,20 @@ function bullson_inc_media_scripts() {
 
 
 	
-	wp_enqueue_script( 'bootstrap-jquery' , get_template_directory_uri() . '/bootstrap/js/jquery.js');
+	// wp_enqueue_script( 'bootstrap-jquery' , get_template_directory_uri() . '/bootstrap/js/jquery.js', array( 'jquery' ), true);
+
+	wp_deregister_script('jquery');
+	wp_enqueue_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js', array(), null, true);
+
 	wp_enqueue_script( 'bootstrap-bundle' , get_template_directory_uri() . '/bootstrap/js/bootstrap.bundle.min.js', array('jquery') );
-	wp_enqueue_script( 'bootstrap-min' , get_template_directory_uri() . '/bootstrap/js/bootstrap.min.js');
+	// wp_enqueue_script( 'bootstrap-min' , get_template_directory_uri() . '/bootstrap/js/bootstrap.min.js', array());
+	wp_enqueue_script( 'boot2','https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js');
+	
 	wp_enqueue_script( 'bootstrap-wow' , get_template_directory_uri() . '/bootstrap/js/wow/wow.min.js', array('jquery'));//
-	wp_enqueue_script( 'magnific-popup-js' , get_template_directory_uri() . '/bootstrap/js/magnific-popup/jquery.magnific-popup.min.js', array('jquery'));//
-	wp_enqueue_script( 'owl-carousel-js' , get_template_directory_uri() . '/bootstrap/js/owl-carousel/owl.carousel.min.js', array('jquery'));//
-	wp_enqueue_script( 'bootstrap-jquery-easing' , get_template_directory_uri() . '/bootstrap/js/easing/jquery.easing.1.3.js', array('jquery'));//
-	wp_enqueue_script( 'bootstrap-custom-js' , get_template_directory_uri() . '/bootstrap/js/custom.js');//
+	wp_enqueue_script( 'magnific-popup-js' , get_template_directory_uri() . '/bootstrap/js/magnific-popup/jquery.magnific-popup.min.js', array('jquery'));
+	wp_enqueue_script( 'owl-carousel-js' , get_template_directory_uri() . '/bootstrap/js/owl-carousel/owl.carousel.min.js', array('jquery'));
+	wp_enqueue_script( 'bootstrap-jquery-easing' , get_template_directory_uri() . '/bootstrap/js/easing/jquery.easing.1.3.js', array('jquery'));
+	wp_enqueue_script( 'bootstrap-custom-js' , get_template_directory_uri() . '/bootstrap/js/custom.js', array());
 
 	// Adding Bootstrap to the Theme - Start
 
@@ -201,3 +210,30 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+/**
+ * Register Custom Navigation Walker
+ */
+function register_navwalker(){
+	require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
+}
+add_action( 'after_setup_theme', 'register_navwalker' );
+
+
+
+ add_filter( 'acf_svg_icon_filepath', 'bea_svg_icon_filepath' );
+function bea_svg_icon_filepath( $filepath ) {
+    if ( is_file( get_stylesheet_directory() . '/assets/icons/icons.svg' ) ) {
+        $filepath[] = get_stylesheet_directory() . '/assets/icons/icons.svg';
+    }
+    return $filepath;
+}
+
+
+
+
+// function prefix_modify_nav_menu_args( $args ) {
+//     return array_merge( $args, array(
+//         'walker' => new WP_Bootstrap_Navwalker(),
+//     ) );
+// }
+// add_filter( 'wp_nav_menu_args', 'prefix_modify_nav_menu_args' );

@@ -8,6 +8,8 @@
     "WordPress",
     "Theme"
   ],
+  "type": "git", "url": "https://github.com/BeAPI/acf-svg-icon" ,
+  "bea/acf-svg-icon": "dev-master",
   "homepage": "https://github.com/Automattic/_s#readme",
   "repository": {
     "type": "git",

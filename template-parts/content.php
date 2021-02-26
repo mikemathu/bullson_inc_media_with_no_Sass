@@ -8,7 +8,6 @@
  */
 
 ?>
-
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
 		<?php
@@ -28,12 +27,13 @@
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
-
+	
 	<?php bullson_inc_media_post_thumbnail(); ?>
 
 	<div class="entry-content">
 		<?php
-		the_content(
+		
+		the_excerpt(
 			sprintf(
 				wp_kses(
 					/* translators: %s: Name of current post. Only visible to screen readers */
@@ -57,7 +57,7 @@
 		?>
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer">
-		<?php bullson_inc_media_entry_footer(); ?>
+	<!-- <footer //class="entry-footer"> -->
+		<?php //bullson_inc_media_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->

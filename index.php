@@ -14,7 +14,7 @@
 
 get_header();
 ?>
-
+index page................
 	<main id="primary" class="site-main">
 
 		<?php

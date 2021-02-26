@@ -78,7 +78,7 @@ html {
  * Remove the margin in all browsers.
  */
 body {
-	margin: 0;
+    margin: 0;
 }
 
 /**
@@ -908,7 +908,7 @@ textarea {
 	margin: -1px;
 	overflow: hidden;
 	padding: 0;
-	position: absolute !important;
+	position: absolute;
 	width: 1px;
 	word-wrap: normal !important;
 }
@@ -995,12 +995,15 @@ color: #fff;
 
 }
 
+.collapse{
+    text-decoration-color: green;
+}
 
 /*====================================================
                         HOME
 ======================================================*/
 #home {
-    height: 100%;
+    height: 100%;    
 }
 
 #home-cover {
@@ -1130,14 +1133,14 @@ a {
 }
 
 .btn-blue {
-    border-color: #34c6d3;
-    color: #34c6d3;
+    border-color: #34c6d3!important;  /* perfect */
+    color: #34c6d3!important; /* perfect */
 }
 
 .btn-blue:hover,
 .btn-blue:focus {
     background-color: #34c6d3;
-    color: #fff;
+    color: #fff!important;
 }
 
 .btn-back-to-top {
@@ -1232,7 +1235,8 @@ a {
     font-size: 20px;
     font-weight: 400;
 	margin: 0 0 10px 0;
-	clear: none;
+    clear: none;
+    display:flex;
 }
 
 .service-item-desc p {
@@ -1343,8 +1347,8 @@ h4.team-member-designation {
 
 /* Teachers Area CSS */
 .single-teachers-area {
-    position: relative;
-    z-index: 1; 
+    /* position: relative;
+    z-index: 1;  */
 }
 .single-teachers-area .teachers-info h5 {
       font-weight: 400;
@@ -1538,47 +1542,88 @@ form .form-control {
 /*====================================================
                        NAVIGATION
 ======================================================*/
+.top{
+
+    /* position: relative; */
+    position: fixed!important;
+    width: 100%;
+    z-index: 2!important;
+    display: inline-block;
+    
+}
 
 .navbar {
-    padding: 20px 0;
-    -webkit-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
+    padding: 20px 0!important;
+    -webkit-transition: all .5s ease-in-out!important;
+    transition: all .5s ease-in-out!important;
+  
+    /* position: fixed!important; */
 }
 .vesco-top-nav {
-    background: rgba(0, 0, 0, 0.7);
-    padding: 7px 0;
+    background: rgba(0, 0, 0, 0.7)!important;
+    padding: 7px 0!important;
 }
 
 .vesco-nav-wrapper {
-    padding: 0 85px;
+    padding: 0 85px!important;
 }
 
 .navbar-nav {
-    float: right;
+    float: right!important;
 }
 
 .navbar-nav>li>a {
-    color: #fff;
-    font-size: 15px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 700;
+    color: #fff!important;
+    font-size: 15px!important;
+    text-transform: uppercase!important;
+    letter-spacing: 1px!important;
+    font-weight: 700!important;
 }
 
 .navbar-nav>li>a:hover,
 .navbar-nav>li>a:focus {
-    background: none;
-    color: #34c6d3;
+    background: none!important;
+    color: #34c6d3!important;
 }
 
 .navbar-toggle {
-    background-color: rgba(0, 0, 0, 0.1);
-    border: 1px solid #fff;
-    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0.1)!important;
+    border: 1px solid #fff!important;
+    border-radius: 0!important;
+}
+
+.navbar-toggle {
+    
+    position: relative;
+    display: none;
+    float: right;
+    margin-right: 15px;
+    padding: 9px 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.navbar-toggle .icon-bar+.icon-bar {
+    margin-top: 4px;
 }
 
 .navbar-toggle .icon-bar {
-    background-color: #fff;
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+}
+
+.navbar-toggle .icon-bar {
+    background-color: #fff!important;
+}
+
+.navbar-brand{
+    display: none;
 }
 
 .navbar-collapse {
@@ -1586,8 +1631,17 @@ form .form-control {
 }
 
 .vesco-top-nav ul.navbar-nav>li.active>a {
-    color: #34c6d3;
+    color: #34c6d3!important;
 }
+
+.navbar>.container, .navbar>.container-fluid, .navbar>.container-lg, .navbar>.container-md, .navbar>.container-sm, .navbar>.container-xl, .navbar>.container-xxl {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: inherit;
+    align-items: center;
+    justify-content: space-between;
+}
+
 
 @media(max-width:768px){
 	header #branding,
@@ -1627,3 +1681,112 @@ color: #fff;
         color: #fff;
         text-transform: lowercase;
             }
+            
+    
+    /*====================================================
+                        Contact Form 7
+======================================================*/
+
+/* Form Styles */
+.wpcf7-form input[type="text"], 
+.wpcf7-form input[type="email"] {
+    color: #1f252b;
+    width: 100%;
+    padding: 6px 16px;
+    border-radius: 0;
+    border: 0;
+}
+.wpcf7-form textarea{
+    height: 150px;
+    width: 115%;
+    resize: none;
+}
+
+.wpcf7-form p {
+    margin: 0 0 28px;
+}
+
+.wpcf7-text:focus, 
+.wpcf7-textarea:focus {
+    outline: 1px solid rgba(58.0, 221.0, 235.0, 1.0);
+    outline-offset: 0;
+}
+
+/* 
+** Button Styles 
+*/
+
+.wpcf7-form .button {
+    /* background-color: #14e2ae; */
+    border-color: #fff;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-width: 2px!important;
+    border-radius: 0!important;
+    padding: 12px 26px 12px 26px;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: uppercase;
+
+    /* border: 0;
+    color: #fff;
+    border-radius: 1px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    width: auto;
+    padding: 20px 42px;
+    letter-spacing: 2px;
+    font-size: 14px; */
+}
+
+
+.wpcf7-form .button:hover 
+.wpcf7-form .button:focus {
+    /* background-color: #34c6d3;
+    color: #34c6d3!important; */
+
+    cursor: pointer;
+    box-shadow: 0px 7px 16px -7px rgba(0, 0, 0, 0.4);
+    border: 0;
+}
+
+/* Error message */
+
+/* div.wpcf7-mail-sent-ok { 
+    border: 0;
+    background: #5471de;
+    color: #fff;
+    padding: 18px;
+}
+
+span.wpcf7-not-valid-tip {
+    color: #f9443b;
+} */
+
+
+.wpcf7 form.invalid .wpcf7-response-output, .wpcf7 form.unaccepted .wpcf7-response-output {
+    border: 0;
+    background: #f9443b;
+    color: #fff;
+    padding: 18px;
+}
+
+.wpcf7 form.failed .wpcf7-response-output, .wpcf7 form.aborted .wpcf7-response-output {
+    border: 0;
+    background: #f9443b;
+    color: #fff;
+    padding: 18px;
+}
+
+
+/* Humbuger Menu */
+.navbar-toggler {
+    background-color: aliceblue!important;
+}
+
+
+
+
+

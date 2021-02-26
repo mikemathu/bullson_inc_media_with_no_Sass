@@ -28,7 +28,7 @@
 
 		<div class="row">
 
-			<div class="col-md-6">
+			<div class="col-md-6 col-sm-12">
 				<div id="contact-left">						
 					<!-- <h3>Pwani Tech Solutions</h3> -->
 
@@ -67,8 +67,33 @@
 
 					</div>
 					<ul class="social-list">
-						<li><a target="_blank" href="https://www.facebook.com/Michael-Mathu-2090738070988692/?modal=admin_todo_tour" class="social-icon icon-white"><i class="fa fa-facebook" ></i></a></li>
-						<li><a target="_blank" href="https://www.linkedin.com/in/michael-mathu-89729215b/" class="social-icon icon-white"><i class="fa fa-linkedin" ></i></a></li>
+						<!-- <li><a target="_blank" href="https://www.facebook.com/Michael-Mathu-2090738070988692/?modal=admin_todo_tour" class="social-icon icon-white"><i class="fa fa-facebook" ></i></a></li>
+						<li><a target="_blank" href="https://www.linkedin.com/in/michael-mathu-89729215b/" class="social-icon icon-white"><i class="fa fa-linkedin" ></i></a></li> -->
+
+
+
+
+						<?php $facebook_url = get_field('facebook_link');
+							if( $facebook_url ): 
+							echo '<li><a target="_blank" href="'.$facebook_url.'" class="social-icon icon-white"><i class="fa fa-facebook"></i></a></li>';
+						endif; 
+						?>
+						<?php $linkedin_url = get_field('linked_in_link');
+							if( $linkedin_url ): 
+							echo '<li><a target="_blank" href="'.$linkedin_url.'" class="social-icon icon-white"><i class="fa fa-linkedin"></i></a></li>';
+						endif; 
+						?>
+						<?php $twitter_url = get_field('twitter_link');
+							if( $twitter_url ): 
+							echo '<li><a target="_blank" href="'.$twitter_url.'" class="social-icon icon-white"><i class="fa fa-twitter"></i></a></li>';
+						endif; 
+						?>
+						<?php $instagram_url = get_field('instagram_link');
+							if( $instagram_url ): 
+							echo '<li><a target="_blank" href="'.$instagram_url.'" class="social-icon icon-white"><i class="fa fa-instagram"></i></a></li>';
+						endif; 
+						?>
+
 					</ul>
 
 				</div>
@@ -76,7 +101,12 @@
 			<div class="col-md-6">
 		  
 				<div id="send-btn">
-				  <h4>Contact Us<a  type="submit" name="submit" class="btn btn-lg btn-general btn-light"><u>pwanitechsolutions@gmail.com</u></a></a></h4>
+					<h4>Contact Us</h4>
+					
+				<?php echo do_shortcode( '[contact-form-7 id="215" title="Contact form 1"]' ); ?>
+				
+				
+				  <!-- <h4>Contact Us<a  type="submit" name="submit" class="btn btn-lg btn-general btn-light"><u>pwanitechsolutions@gmail.com</u></a></a></h4> -->
 				</div>
 			</div>
 
@@ -115,22 +145,7 @@
 </a>
 
 
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'bullson_inc_media' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'bullson_inc_media' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'bullson_inc_media' ), 'bullson_inc_media', '<a href="http://github.com/michaelmathu">Michael Mathu</a>' );
-				?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-</div><!-- #page -->
-
+		
 
 <?php wp_footer(); ?>
 </body>
